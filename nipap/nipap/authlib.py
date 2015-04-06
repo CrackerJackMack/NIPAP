@@ -496,7 +496,7 @@ class SqliteAuth(BaseAuth):
             Creates tables required for the authentication module.
         """
 
-        self._logger.info('creating user database')
+        self._logger.debug('creating user database')
         sql = '''CREATE TABLE IF NOT EXISTS user (
             username NOT NULL PRIMARY KEY,
             pwd_salt NOT NULL,
@@ -516,7 +516,7 @@ class SqliteAuth(BaseAuth):
             This is a fairly primitive function that won't look at how the
             database looks like but just blindly run commands.
         """
-        self._logger.info('upgrading user database')
+        self._logger.debug('upgrading user database')
         # add readonly column
         try:
             sql = '''ALTER TABLE user ADD COLUMN readonly NOT NULL DEFAULT 0'''

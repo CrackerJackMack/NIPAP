@@ -246,7 +246,7 @@ def requires_rw(f):
         auth = args[1]
         if auth.readonly:
             logger = logging.getLogger()
-            logger.info("read-only user '%s' is not authorized to run function '%s'" % (auth.username, f.__name__))
+            logger.error("read-only user '%s' is not authorized to run function '%s'" % (auth.username, f.__name__))
             raise authlib.AuthorizationFailed("read-only user '%s' is not authorized to run function '%s'" % (auth.username, f.__name__))
         return f(*args, **kwargs)
 
@@ -570,7 +570,7 @@ class Nipap:
                 raise NipapError(estr)
 
             # reconnect to database and retry query
-            self._logger.info("Reconnecting to database...")
+            self._logger.debug("Reconnecting to database...")
             self._connect_db()
 
             return self._execute(sql, opt, callno + 1)
@@ -3921,7 +3921,7 @@ class Nipap:
             'description': message or 'no message provided',
         }
 
-        self._logger.info(
+        self._logger.warn(
             'USER:{username}({full_name})@{authenticated_as} '
             'SOURCE:{authoritative_source} ACTION:{op} '
             'DESC:{description}'.format(op=action, **audit_params))

@@ -97,7 +97,6 @@ if __name__ == '__main__':
     # setup basic logging
     logging.basicConfig(format=LOG_FORMAT)
     logger = logging.getLogger()
-    logger.setLevel(logging.INFO)
 
     default = {
         'syslog': 'false',
