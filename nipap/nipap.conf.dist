@@ -110,6 +110,8 @@ db_path = /etc/nipap/local_auth.db     ; path to SQLite database used
 #
 #basedn = dc=test,dc=com                ; base DN
 #uri = ldaps://ldap.test.com            ; LDAP server URI
+#tls = False                            ; initiate TLS, use ldap://
+#cacert = /etc/ssl/certs/cacert.pem     ; optional path to CA cert
 #
 # LDAP style
 #binddn_fmt = uid={},dc=test,dc=com
